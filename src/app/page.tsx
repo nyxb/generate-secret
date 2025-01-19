@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { generateSecret } from '~/lib/generate-secret';
 import { ny } from '~/lib/utils';
 import { ThemeToggle } from "~/components/theme-toggle"
+import Image from 'next/image';
 
 const SECRET_LENGTHS = [16, 32, 64, 128];
 
@@ -29,10 +30,37 @@ export default function Home() {
         <ThemeToggle />
       </div>
       <div className="max-w-2xl w-full space-y-8">
-        <h1 className="text-4xl font-bold text-center text-foreground">
-          Secret Generator
-        </h1>
+        <div className="flex flex-col items-center space-y-6">
+          <Image
+            src="/icon.png"
+            alt="Generate Secret Logo"
+            width={80}
+            height={80}
+            className="dark:invert"
+            priority
+          />
+          <h1 className="text-4xl font-bold text-center text-foreground">
+            Secret Generator
+          </h1>
+        </div>
         
+        <div className="text-center text-muted-foreground">
+          <p className="mb-2">
+            Generate secure random strings for API keys, passwords, and tokens.
+          </p>
+          <p className="text-sm">
+            🚀 Pro Tip: You can also use this via{" "}
+            <a 
+              href="https://github.com/nyxb/generate-secret"
+              className="text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Raycast Extension
+            </a>
+          </p>
+        </div>
+
         <div className="flex flex-wrap gap-4 justify-center">
           {SECRET_LENGTHS.map((length) => (
             <Button
